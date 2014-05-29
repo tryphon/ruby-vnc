@@ -98,6 +98,11 @@ module Net
 			end
 		end
 
+    def self.save_password(password, file)
+      encrypt_password = Cipher::DES.encrypt([ 23,82,107,6,35,78,88,7 ], password)[0..7]
+      File.write file, encrypt_password
+    end
+
 		def port
 			BASE_PORT + @display
 		end
@@ -303,4 +308,3 @@ module Net
 		end
 	end
 end
-
